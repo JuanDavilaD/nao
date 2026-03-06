@@ -24,7 +24,7 @@ export const handleAgentRoute = async (opts: HandleAgentMessageInput): Promise<H
 	if (!projectId) {
 		throw new HandlerError(
 			'BAD_REQUEST',
-			'No project configured. Set NAO_DEFAULT_PROJECT_PATH environment variable.',
+			'No project configured. Set LYSMART_DEFAULT_PROJECT_PATH environment variable.',
 		);
 	}
 

@@ -14,7 +14,7 @@ export default createTool<list.Input, list.Output>({
 		const projectFolder = context.projectFolder;
 		const realPath = toRealPath(filePath, projectFolder);
 
-		// Get the relative path of the parent directory for naoignore matching
+		// Get the relative path of the parent directory for lysmartignore matching
 		const parentRelativePath = path.relative(projectFolder, realPath);
 
 		const dirEntries = await fs.readdir(realPath, { withFileTypes: true });

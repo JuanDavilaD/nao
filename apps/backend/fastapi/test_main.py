@@ -44,7 +44,7 @@ def test_execute_sql_simple_duckdb(duckdb_project_folder):
         "/execute_sql",
         json={
             "sql": "SELECT 1 AS id, 'hello' AS message",
-            "nao_project_folder": duckdb_project_folder,
+            "lysmart_project_folder": duckdb_project_folder,
         },
     )
 
@@ -65,7 +65,7 @@ def test_execute_sql_with_cte_duckdb(duckdb_project_folder):
         "/execute_sql",
         json={
             "sql": "WITH test AS (SELECT 1 AS id, 'hello' AS message) SELECT * FROM test",
-            "nao_project_folder": duckdb_project_folder,
+            "lysmart_project_folder": duckdb_project_folder,
         },
     )
 
@@ -109,7 +109,7 @@ def test_execute_sql_simple_bigquery(bigquery_project_folder):
         "/execute_sql",
         json={
             "sql": "SELECT 1 AS id, 'hello' AS message",
-            "nao_project_folder": bigquery_project_folder,
+            "lysmart_project_folder": bigquery_project_folder,
         },
     )
 
@@ -139,7 +139,7 @@ def test_execute_sql_with_cte_bigquery(bigquery_project_folder):
         "/execute_sql",
         json={
             "sql": cte_sql,
-            "nao_project_folder": bigquery_project_folder,
+            "lysmart_project_folder": bigquery_project_folder,
         },
     )
 

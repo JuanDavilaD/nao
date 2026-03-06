@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import path from 'path';
 
 import { renderToModelOutput, SearchOutput } from '../../components/tool-outputs';
-import { isWithinProjectFolder, loadNaoignorePatterns, toVirtualPath } from '../../utils/tools';
+import { isWithinProjectFolder, loadLysmartIgnorePatterns, toVirtualPath } from '../../utils/tools';
 import { createTool } from '../../utils/tools';
 
 export default createTool<searchFiles.Input, searchFiles.Output>({
@@ -26,8 +26,8 @@ export default createTool<searchFiles.Input, searchFiles.Output>({
 		const sanitizedPattern = pattern.startsWith('**/') ? pattern : `**/${pattern}`;
 
 		// Build ignore patterns from .lysmart_ignore
-		const naoignorePatterns = loadNaoignorePatterns(projectFolder);
-		const ignorePatterns = naoignorePatterns.flatMap((ignorePattern) => {
+		const lysmartIgnorePatterns = loadLysmartIgnorePatterns(projectFolder);
+		const ignorePatterns = lysmartIgnorePatterns.flatMap((ignorePattern) => {
 			const cleanPattern = ignorePattern.endsWith('/') ? ignorePattern.slice(0, -1) : ignorePattern;
 			return [`**/${cleanPattern}`, `**/${cleanPattern}/**`];
 		});

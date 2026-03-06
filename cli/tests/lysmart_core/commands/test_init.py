@@ -83,13 +83,13 @@ class TestCreateEmptyStructure:
         assert rules_file.exists()
         assert rules_file.is_file()
 
-    def test_creates_naoignore_file(self, tmp_path: Path):
+    def test_creates_lysmartignore_file(self, tmp_path: Path):
         """Creates .lysmart_ignore file with templates/ entry."""
         folders, files = create_empty_structure(tmp_path)
 
-        naoignore_file = tmp_path / ".lysmart_ignore"
-        assert naoignore_file.exists()
-        content = naoignore_file.read_text()
+        lysmartignore_file = tmp_path / ".lysmart_ignore"
+        assert lysmartignore_file.exists()
+        content = lysmartignore_file.read_text()
         assert "templates/" in content
 
     def test_returns_created_files_list(self, tmp_path: Path):

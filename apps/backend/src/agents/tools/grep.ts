@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { GrepOutput, renderToModelOutput } from '../../components/tool-outputs';
-import { isWithinProjectFolder, loadNaoignorePatterns, toRealPath, toVirtualPath } from '../../utils/tools';
+import { isWithinProjectFolder, loadLysmartIgnorePatterns, toRealPath, toVirtualPath } from '../../utils/tools';
 import { createTool } from '../../utils/tools';
 
 /**
@@ -84,9 +84,9 @@ export default createTool<grep.Input, grep.Output>({
 		}
 
 		// Add .lysmart_ignore patterns as exclusions
-		const naoignorePatterns = loadNaoignorePatterns(projectFolder);
-		for (const ignorePattern of naoignorePatterns) {
-			// Convert naoignore patterns to ripgrep glob exclusions
+		const lysmartIgnorePatterns = loadLysmartIgnorePatterns(projectFolder);
+		for (const ignorePattern of lysmartIgnorePatterns) {
+			// Convert lysmartignore patterns to ripgrep glob exclusions
 			const cleanPattern = ignorePattern.endsWith('/') ? ignorePattern.slice(0, -1) : ignorePattern;
 			args.push('--glob', `!${cleanPattern}`);
 			args.push('--glob', `!${cleanPattern}/**`);

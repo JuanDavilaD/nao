@@ -60,14 +60,14 @@ services:
             # =================================================================
             # Git-based Context Configuration
             # =================================================================
-            NAO_CONTEXT_SOURCE: git
-            NAO_CONTEXT_GIT_URL: ${NAO_CONTEXT_GIT_URL}
-            NAO_CONTEXT_GIT_BRANCH: ${NAO_CONTEXT_GIT_BRANCH:-main}
-            NAO_CONTEXT_GIT_TOKEN: ${NAO_CONTEXT_GIT_TOKEN}
-            NAO_DEFAULT_PROJECT_PATH: /app/context
+            LYSMART_CONTEXT_SOURCE: git
+            LYSMART_CONTEXT_GIT_URL: ${LYSMART_CONTEXT_GIT_URL}
+            LYSMART_CONTEXT_GIT_BRANCH: ${LYSMART_CONTEXT_GIT_BRANCH:-main}
+            LYSMART_CONTEXT_GIT_TOKEN: ${LYSMART_CONTEXT_GIT_TOKEN}
+            LYSMART_DEFAULT_PROJECT_PATH: /app/context
 
             # Refresh context every hour (git pull)
-            NAO_REFRESH_SCHEDULE: '0 * * * *'
+            LYSMART_REFRESH_SCHEDULE: '0 * * * *'
         depends_on:
             - postgres
 

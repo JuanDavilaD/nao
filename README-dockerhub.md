@@ -36,7 +36,7 @@ docker run -d \
 
 | Variable                   | Required | Description                                           |
 | -------------------------- | -------- | ----------------------------------------------------- |
-| `NAO_DEFAULT_PROJECT_PATH` | Yes      | Path to your nao project (default: `/app/example`)    |
+| `LYSMART_DEFAULT_PROJECT_PATH` | Yes      | Path to your LySmart project (default: `/app/example`)    |
 | `OPENAI_API_KEY`           | No\*     | OpenAI API key                                        |
 | `ANTHROPIC_API_KEY`        | No\*     | Anthropic API key                                     |
 | `BETTER_AUTH_SECRET`       | No       | Secret key for authentication                         |
@@ -61,7 +61,7 @@ Mount your LySmart project directory to make it available to the agent:
 -v /path/to/your/lysmart-project:/app/project
 ```
 
-Then set `NAO_DEFAULT_PROJECT_PATH=/app/project`, you can also use the example project by setting `NAO_DEFAULT_PROJECT_PATH=/app/example`.
+Then set `LYSMART_DEFAULT_PROJECT_PATH=/app/project`, you can also use the example project by setting `LYSMART_DEFAULT_PROJECT_PATH=/app/example`.
 
 ## Docker run example
 
@@ -69,7 +69,7 @@ Then set `NAO_DEFAULT_PROJECT_PATH=/app/project`, you can also use the example p
 docker run -d \
   --name lysmart \
   -p 5005:5005 \
-  -e NAO_DEFAULT_PROJECT_PATH=/app/project \
+  -e LYSMART_DEFAULT_PROJECT_PATH=/app/project \
   getlysmart/lysmart:latest
 ```
 

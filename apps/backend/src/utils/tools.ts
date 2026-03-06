@@ -29,23 +29,23 @@ export const EXCLUDED_DIRS = ['.meta'];
 /**
  * Cache for .lysmart_ignore patterns per project folder.
  */
-const naoignoreCache = new Map<string, string[]>();
+const lysmartIgnoreCache = new Map<string, string[]>();
 
 /**
  * Loads and parses the .lysmart_ignore file from the project folder.
  * Returns an array of patterns. Results are cached per project folder.
  */
-export const loadNaoignorePatterns = (projectFolder: string): string[] => {
-	if (naoignoreCache.has(projectFolder)) {
-		return naoignoreCache.get(projectFolder)!;
+export const loadLysmartIgnorePatterns = (projectFolder: string): string[] => {
+	if (lysmartIgnoreCache.has(projectFolder)) {
+		return lysmartIgnoreCache.get(projectFolder)!;
 	}
 
-	const naoignorePath = path.join(projectFolder, '.lysmart_ignore');
+	const lysmartIgnorePath = path.join(projectFolder, '.lysmart_ignore');
 	let patterns: string[] = [];
 
 	try {
-		if (fs.existsSync(naoignorePath)) {
-			const content = fs.readFileSync(naoignorePath, 'utf-8');
+		if (fs.existsSync(lysmartIgnorePath)) {
+			const content = fs.readFileSync(lysmartIgnorePath, 'utf-8');
 			patterns = content
 				.split('\n')
 				.map((line) => line.trim())
@@ -55,15 +55,15 @@ export const loadNaoignorePatterns = (projectFolder: string): string[] => {
 		// If we can't read the file, return empty patterns
 	}
 
-	naoignoreCache.set(projectFolder, patterns);
+	lysmartIgnoreCache.set(projectFolder, patterns);
 	return patterns;
 };
 
 /**
- * Clears the naoignore cache. Useful for testing or when the .lysmart_ignore file changes.
+ * Clears the lysmartignore cache. Useful for testing or when the .lysmart_ignore file changes.
  */
-export const clearNaoignoreCache = (): void => {
-	naoignoreCache.clear();
+export const clearLysmartIgnoreCache = (): void => {
+	lysmartIgnoreCache.clear();
 };
 
 /**
@@ -72,8 +72,8 @@ export const clearNaoignoreCache = (): void => {
  * @param projectFolder - The project folder path
  * @returns true if the path should be ignored
  */
-export const isIgnoredByNaoignore = (relativePath: string, projectFolder: string): boolean => {
-	const patterns = loadNaoignorePatterns(projectFolder);
+export const isIgnoredByLysmartIgnore = (relativePath: string, projectFolder: string): boolean => {
+	const patterns = loadLysmartIgnorePatterns(projectFolder);
 
 	// Normalize the path (remove leading slash if present)
 	const normalizedPath = relativePath.startsWith('/') ? relativePath.slice(1) : relativePath;
@@ -119,12 +119,12 @@ export const isIgnoredPath = (realPath: string, projectFolder: string): boolean 
 	const resolved = path.resolve(realPath);
 	const relativePath = path.relative(projectFolder, resolved);
 
-	// Paths outside project folder are not subject to naoignore
+	// Paths outside project folder are not subject to lysmartignore
 	if (relativePath.startsWith('..')) {
 		return false;
 	}
 
-	return isIgnoredByNaoignore(relativePath, projectFolder);
+	return isIgnoredByLysmartIgnore(relativePath, projectFolder);
 };
 
 /**
@@ -156,9 +156,9 @@ export const shouldExcludeEntry = (entryName: string, parentPath: string, projec
 		return true;
 	}
 
-	// Then check naoignore patterns
+	// Then check lysmartignore patterns
 	const relativePath = parentPath ? `${parentPath}/${entryName}` : entryName;
-	return isIgnoredByNaoignore(relativePath, projectFolder);
+	return isIgnoredByLysmartIgnore(relativePath, projectFolder);
 };
 
 /**

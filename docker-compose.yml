@@ -52,20 +52,20 @@ services:
             # Context Configuration
             # =================================================================
             # Option A: Local mode (default) - uses bundled example or volume mount
-            NAO_CONTEXT_SOURCE: local
-            NAO_DEFAULT_PROJECT_PATH: /app/example
+            LYSMART_CONTEXT_SOURCE: local
+            LYSMART_DEFAULT_PROJECT_PATH: /app/example
 
             # Option B: Git mode - uncomment and configure these instead:
-            # NAO_CONTEXT_SOURCE: git
-            # NAO_CONTEXT_GIT_URL: https://github.com/your-org/your-nao-context.git
-            # NAO_CONTEXT_GIT_BRANCH: main
-            # NAO_CONTEXT_GIT_TOKEN: ${GITHUB_TOKEN}
-            # NAO_DEFAULT_PROJECT_PATH: /app/context
+            # LYSMART_CONTEXT_SOURCE: git
+            # LYSMART_CONTEXT_GIT_URL: https://github.com/your-org/your-lysmart-context.git
+            # LYSMART_CONTEXT_GIT_BRANCH: main
+            # LYSMART_CONTEXT_GIT_TOKEN: ${GITHUB_TOKEN}
+            # LYSMART_DEFAULT_PROJECT_PATH: /app/context
 
             # Optional: Schedule periodic git pull (cron expression)
-            # NAO_REFRESH_SCHEDULE: "0 * * * *"  # Every hour
+            # LYSMART_REFRESH_SCHEDULE: "0 * * * *"  # Every hour
         volumes:
-            - ${NAO_DEFAULT_PROJECT_PATH}:/app/example
+            - ${LYSMART_DEFAULT_PROJECT_PATH}:/app/example
         depends_on:
             - postgres
 

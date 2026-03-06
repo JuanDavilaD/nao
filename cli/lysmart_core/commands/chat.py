@@ -200,11 +200,11 @@ def chat(port: Annotated[Optional[int], Parameter(name=["-p", "--port"])] = None
             env["SLACK_SIGNING_SECRET"] = config.slack.signing_secret
             console.print("[bold green]✓[/bold green] Set Slack environment variables from config")
 
-        env["NAO_DEFAULT_PROJECT_PATH"] = str(Path.cwd())
+        env["LYSMART_DEFAULT_PROJECT_PATH"] = str(Path.cwd())
         if "BETTER_AUTH_URL" not in os.environ:
             env["BETTER_AUTH_URL"] = f"http://localhost:{port}"
         env["MODE"] = MODE
-        env["NAO_CORE_VERSION"] = __version__
+        env["LYSMART_CORE_VERSION"] = __version__
 
         # Start the FastAPI server first
         fastapi_path = get_fastapi_main_path()

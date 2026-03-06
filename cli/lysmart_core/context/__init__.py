@@ -12,27 +12,27 @@ def get_context_provider() -> ContextProvider:
     """Factory function to create the appropriate context provider based on environment variables.
 
     Environment variables:
-        NAO_CONTEXT_SOURCE: 'local' (default) or 'git'
-        NAO_DEFAULT_PROJECT_PATH: Target path for context (required)
+        LYSMART_CONTEXT_SOURCE: 'local' (default) or 'git'
+        LYSMART_DEFAULT_PROJECT_PATH: Target path for context (required)
 
     For git source:
-        NAO_CONTEXT_GIT_URL: Git repository URL (required)
-        NAO_CONTEXT_GIT_BRANCH: Branch to clone/pull (default: 'main')
-        NAO_CONTEXT_GIT_TOKEN: Auth token for private repos (optional)
+        LYSMART_CONTEXT_GIT_URL: Git repository URL (required)
+        LYSMART_CONTEXT_GIT_BRANCH: Branch to clone/pull (default: 'main')
+        LYSMART_CONTEXT_GIT_TOKEN: Auth token for private repos (optional)
 
     Returns:
         ContextProvider instance based on configuration
     """
-    source = os.environ.get("NAO_CONTEXT_SOURCE", "local").lower()
-    target_path = Path(os.environ.get("NAO_DEFAULT_PROJECT_PATH", "/app/context"))
+    source = os.environ.get("LYSMART_CONTEXT_SOURCE", "local").lower()
+    target_path = Path(os.environ.get("LYSMART_DEFAULT_PROJECT_PATH", "/app/context"))
 
     if source == "git":
-        git_url = os.environ.get("NAO_CONTEXT_GIT_URL")
+        git_url = os.environ.get("LYSMART_CONTEXT_GIT_URL")
         if not git_url:
-            raise ValueError("NAO_CONTEXT_GIT_URL is required when NAO_CONTEXT_SOURCE=git")
+            raise ValueError("LYSMART_CONTEXT_GIT_URL is required when LYSMART_CONTEXT_SOURCE=git")
 
-        branch = os.environ.get("NAO_CONTEXT_GIT_BRANCH", "main")
-        token = os.environ.get("NAO_CONTEXT_GIT_TOKEN")
+        branch = os.environ.get("LYSMART_CONTEXT_GIT_BRANCH", "main")
+        token = os.environ.get("LYSMART_CONTEXT_GIT_TOKEN")
 
         return GitContextProvider(
             repo_url=git_url,
@@ -43,7 +43,7 @@ def get_context_provider() -> ContextProvider:
     elif source == "local":
         return LocalContextProvider(target_path=target_path)
     else:
-        raise ValueError(f"Unknown NAO_CONTEXT_SOURCE: {source}. Must be 'local' or 'git'")
+        raise ValueError(f"Unknown LYSMART_CONTEXT_SOURCE: {source}. Must be 'local' or 'git'")
 
 
 __all__ = [

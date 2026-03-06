@@ -31,7 +31,7 @@ pytestmark = pytest.mark.skipif(
 @pytest.fixture(scope="module")
 def temp_database():
     """Create a temporary database and populate it with test data, then clean up."""
-    db_name = f"NAO_UNIT_TESTS_{uuid.uuid4().hex[:8].upper()}"
+    db_name = f"LYSMART_UNIT_TESTS_{uuid.uuid4().hex[:8].upper()}"
 
     # Load private key for authentication
     private_key_path = os.environ["SNOWFLAKE_PRIVATE_KEY_PATH"]

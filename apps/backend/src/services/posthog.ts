@@ -71,14 +71,14 @@ export class PostHogService {
 	/** Add properties that will be shown on the PostHog person's profile. */
 	private _personProperties(): Record<string, unknown> {
 		return {
-			lysmart_core_version: env.NAO_CORE_VERSION, // Set `lysmart_core_version` in event and person properties for convenience
+			lysmart_core_version: env.LYSMART_CORE_VERSION, // Set `lysmart_core_version` in event and person properties for convenience
 			// `$set` replaces any property value that may have been set on a person profile
 			$set: {
-				lysmart_core_version: env.NAO_CORE_VERSION,
+				lysmart_core_version: env.LYSMART_CORE_VERSION,
 			},
 			// `$set_once` only sets the property if it has not been set before
 			$set_once: {
-				first_lysmart_core_version: env.NAO_CORE_VERSION,
+				first_lysmart_core_version: env.LYSMART_CORE_VERSION,
 			},
 		};
 	}

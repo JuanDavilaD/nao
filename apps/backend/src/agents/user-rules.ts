@@ -7,7 +7,7 @@ import { env } from '../env';
  * Reads user-defined rules from RULES.md in the project folder if it exists
  */
 export function getUserRules(): string | undefined {
-	const projectFolder = env.NAO_DEFAULT_PROJECT_PATH;
+	const projectFolder = env.LYSMART_DEFAULT_PROJECT_PATH;
 
 	if (!projectFolder) {
 		return undefined;
@@ -34,7 +34,7 @@ type Connection = {
 };
 
 export function getConnections(): Connection[] | undefined {
-	const projectFolder = env.NAO_DEFAULT_PROJECT_PATH;
+	const projectFolder = env.LYSMART_DEFAULT_PROJECT_PATH;
 
 	if (!projectFolder) {
 		return undefined;

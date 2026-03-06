@@ -169,7 +169,7 @@ docker run -d \
   -p 5005:5005 \
   -e BETTER_AUTH_URL=http://localhost:5005 \
   -v /path/to/your/lysmart-project:/app/project \
-  -e NAO_DEFAULT_PROJECT_PATH=/app/project \
+  -e LYSMART_DEFAULT_PROJECT_PATH=/app/project \
   getlysmart/lysmart:latest
 ```
 

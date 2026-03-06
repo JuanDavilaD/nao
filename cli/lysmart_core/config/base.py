@@ -247,7 +247,7 @@ class LySmartConfig(BaseModel):
         """Try to load config from path.
 
         Args:
-            path: Directory containing lysmart_config.yaml. Defaults to NAO_DEFAULT_PROJECT_PATH
+            path: Directory containing lysmart_config.yaml. Defaults to LYSMART_DEFAULT_PROJECT_PATH
                   environment variable if set, otherwise current directory.
             exit_on_error: If True, prints error message and calls sys.exit(1) on failure.
             raise_on_error: If True, raises LySmartConfigError on failure.
@@ -255,7 +255,7 @@ class LySmartConfig(BaseModel):
             LySmartConfig if loaded successfully, None if failed and both flags are False.
         """
         if path is None:
-            default_path = os.environ.get("NAO_DEFAULT_PROJECT_PATH")
+            default_path = os.environ.get("LYSMART_DEFAULT_PROJECT_PATH")
             path = Path(default_path) if default_path else Path.cwd()
 
         config_file = path / "lysmart_config.yaml"

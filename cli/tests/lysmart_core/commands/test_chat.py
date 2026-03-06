@@ -331,7 +331,7 @@ class TestChatCommand:
         chat_server_call = mock_popen.call_args_list[1]
         env = chat_server_call.kwargs.get("env", {})
 
-        assert "NAO_DEFAULT_PROJECT_PATH" in env
+        assert "LYSMART_DEFAULT_PROJECT_PATH" in env
         assert "BETTER_AUTH_SECRET" in env
 
     @patch("lysmart_core.commands.chat.webbrowser.open")

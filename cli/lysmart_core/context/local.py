@@ -31,7 +31,7 @@ class LocalContextProvider(ContextProvider):
             raise FileNotFoundError(
                 f"Context path does not exist: {self.target_path}\n"
                 "For local mode, ensure the path is mounted as a Docker volume "
-                "or use NAO_CONTEXT_SOURCE=git for git-based context."
+                "or use LYSMART_CONTEXT_SOURCE=git for git-based context."
             )
 
         if not self.validate():

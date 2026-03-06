@@ -10,7 +10,7 @@ const ADMIN_NAME = 'Test';
 const ORG_NAME = 'Test Organization';
 const ORG_SLUG = 'test';
 const PROJECT_NAME = 'Test Project';
-const PROJECT_PATH = env.NAO_DEFAULT_PROJECT_PATH ?? './';
+const PROJECT_PATH = env.LYSMART_DEFAULT_PROJECT_PATH ?? './';
 
 /**
  * Seeds the database with the test admin user and their project.
