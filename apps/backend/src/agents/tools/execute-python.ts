@@ -1,4 +1,4 @@
-import { executePython as schemas } from '@nao/shared/tools';
+import { executePython as schemas } from '@lysmart/shared/tools';
 import fs from 'fs';
 import path from 'path';
 

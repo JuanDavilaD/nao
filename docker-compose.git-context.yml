@@ -1,15 +1,15 @@
 # =============================================================================
 # Docker Compose for Git-based Context
 # =============================================================================
-# This example shows how to deploy nao with context loaded from a git repository.
+# This example shows how to deploy LySmart with context loaded from a git repository.
 # No volume mount is required - the container clones the context on startup.
 #
 # Usage:
 #   docker-compose -f docker-compose.git-context.yml up -d
 #
 # Prerequisites:
-#   1. Create a git repo with your nao context (nao_config.yaml, databases/, etc.)
-#   2. Set up CI/CD to run `nao sync` and commit results
+#   1. Create a git repo with your LySmart context (lysmart_config.yaml, databases/, etc.)
+#   2. Set up CI/CD to run `lysmart sync` and commit results
 #   3. Create a .env file with your secrets
 #
 # =============================================================================
@@ -17,22 +17,22 @@
 services:
     postgres:
         image: postgres:16-alpine
-        container_name: nao_chat_postgres
+        container_name: lysmart_chat_postgres
         environment:
-            POSTGRES_USER: ${POSTGRES_USER:-nao}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nao}
-            POSTGRES_DB: ${POSTGRES_DB:-nao}
+            POSTGRES_USER: ${POSTGRES_USER:-lysmart}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lysmart}
+            POSTGRES_DB: ${POSTGRES_DB:-lysmart}
         ports:
             - '8888:5432'
         volumes:
-            - nao_postgres_data:/var/lib/postgresql/data
+            - lysmart_postgres_data:/var/lib/postgresql/data
         healthcheck:
-            test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-nao} -d ${POSTGRES_DB:-nao}']
+            test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-lysmart} -d ${POSTGRES_DB:-lysmart}']
             interval: 5s
             timeout: 5s
             retries: 5
 
-    nao:
+    lysmart:
         build:
             context: .
             dockerfile: Dockerfile
@@ -53,23 +53,23 @@ services:
             GOOGLE_APPLICATION_CREDENTIALS_JSON: ${GOOGLE_APPLICATION_CREDENTIALS_JSON}
 
             # =================================================================
-            # Database for nao chat history
+            # Database for LySmart chat history
             # =================================================================
-            DB_URI: postgres://${POSTGRES_USER:-nao}:${POSTGRES_PASSWORD:-nao}@postgres:5432/${POSTGRES_DB:-nao}
+            DB_URI: postgres://${POSTGRES_USER:-lysmart}:${POSTGRES_PASSWORD:-lysmart}@postgres:5432/${POSTGRES_DB:-lysmart}
 
             # =================================================================
             # Git-based Context Configuration
             # =================================================================
-            NAO_CONTEXT_SOURCE: git
-            NAO_CONTEXT_GIT_URL: ${NAO_CONTEXT_GIT_URL}
-            NAO_CONTEXT_GIT_BRANCH: ${NAO_CONTEXT_GIT_BRANCH:-main}
-            NAO_CONTEXT_GIT_TOKEN: ${NAO_CONTEXT_GIT_TOKEN}
-            NAO_DEFAULT_PROJECT_PATH: /app/context
+            LYSMART_CONTEXT_SOURCE: git
+            LYSMART_CONTEXT_GIT_URL: ${LYSMART_CONTEXT_GIT_URL}
+            LYSMART_CONTEXT_GIT_BRANCH: ${LYSMART_CONTEXT_GIT_BRANCH:-main}
+            LYSMART_CONTEXT_GIT_TOKEN: ${LYSMART_CONTEXT_GIT_TOKEN}
+            LYSMART_DEFAULT_PROJECT_PATH: /app/context
 
             # Refresh context every hour (git pull)
-            NAO_REFRESH_SCHEDULE: '0 * * * *'
+            LYSMART_REFRESH_SCHEDULE: '0 * * * *'
         depends_on:
             - postgres
 
 volumes:
-    nao_postgres_data:
+    lysmart_postgres_data:

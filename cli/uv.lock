@@ -2039,7 +2039,7 @@ wheels = [
 ]
 
 [[package]]
-name = "nao-core"
+name = "lysmart-core"
 version = "0.0.36"
 source = { editable = "." }
 dependencies = [

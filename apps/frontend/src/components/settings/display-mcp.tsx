@@ -81,7 +81,7 @@ export function McpSettings({ isAdmin }: Props) {
 	return (
 		<SettingsCard
 			title='MCP Servers'
-			description='Integrate MCP servers to extend the capabilities of nao.'
+			description='Integrate MCP servers to extend the capabilities of LySmart.'
 			action={
 				isAdmin && (
 					<Button

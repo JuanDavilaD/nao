@@ -37,8 +37,8 @@ const envSchema = z.object({
 	APP_COMMIT: z.string().default('unknown'),
 	APP_BUILD_DATE: z.string().default(''),
 
-	NAO_DEFAULT_PROJECT_PATH: z.string().optional(),
-	NAO_CORE_VERSION: z.string().optional(),
+	LYSMART_DEFAULT_PROJECT_PATH: z.string().optional(),
+	LYSMART_CORE_VERSION: z.string().optional(),
 
 	POSTHOG_KEY: z.string().optional(),
 	POSTHOG_HOST: z.url({ message: 'POSTHOG_HOST must be a valid URL' }).optional(),

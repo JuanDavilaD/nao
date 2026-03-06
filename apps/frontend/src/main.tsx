@@ -10,7 +10,7 @@ import { PostHogProvider } from './contexts/posthog.provider';
 import { ThemeProvider } from './contexts/theme.provider';
 import { routeTree } from './routeTree.gen';
 import reportWebVitals from './reportWebVitals';
-import type { TrpcRouter } from '@nao/backend/trpc';
+import type { TrpcRouter } from '@lysmart/backend/trpc';
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {

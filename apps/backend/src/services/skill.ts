@@ -1,4 +1,4 @@
-import { debounce } from '@nao/shared';
+import { debounce } from '@lysmart/shared';
 import { existsSync, readdirSync, readFileSync, statSync, watch } from 'fs';
 import matter from 'gray-matter';
 import { join, relative } from 'path';

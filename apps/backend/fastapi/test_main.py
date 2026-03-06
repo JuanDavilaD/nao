@@ -30,7 +30,7 @@ def duckdb_project_folder():
                 }
             ],
         }
-        config_path = Path(tmpdir) / "nao_config.yaml"
+        config_path = Path(tmpdir) / "lysmart_config.yaml"
         with config_path.open("w") as f:
             yaml.dump(config, f)
         yield tmpdir
@@ -44,7 +44,7 @@ def test_execute_sql_simple_duckdb(duckdb_project_folder):
         "/execute_sql",
         json={
             "sql": "SELECT 1 AS id, 'hello' AS message",
-            "nao_project_folder": duckdb_project_folder,
+            "lysmart_project_folder": duckdb_project_folder,
         },
     )
 
@@ -65,7 +65,7 @@ def test_execute_sql_with_cte_duckdb(duckdb_project_folder):
         "/execute_sql",
         json={
             "sql": "WITH test AS (SELECT 1 AS id, 'hello' AS message) SELECT * FROM test",
-            "nao_project_folder": duckdb_project_folder,
+            "lysmart_project_folder": duckdb_project_folder,
         },
     )
 
@@ -88,14 +88,14 @@ def bigquery_project_folder():
             "project_name": "test-project",
             "databases": [
                 {
-                    "name": "nao-bigquery",
+                    "name": "lysmart-bigquery",
                     "type": "bigquery",
-                    "project_id": "nao-corp",
+                    "project_id": "lysmart-corp",
                     "sso": True,
                 }
             ],
         }
-        config_path = Path(tmpdir) / "nao_config.yaml"
+        config_path = Path(tmpdir) / "lysmart_config.yaml"
         with config_path.open("w") as f:
             yaml.dump(config, f)
         yield tmpdir
@@ -109,7 +109,7 @@ def test_execute_sql_simple_bigquery(bigquery_project_folder):
         "/execute_sql",
         json={
             "sql": "SELECT 1 AS id, 'hello' AS message",
-            "nao_project_folder": bigquery_project_folder,
+            "lysmart_project_folder": bigquery_project_folder,
         },
     )
 
@@ -139,7 +139,7 @@ def test_execute_sql_with_cte_bigquery(bigquery_project_folder):
         "/execute_sql",
         json={
             "sql": cte_sql,
-            "nao_project_folder": bigquery_project_folder,
+            "lysmart_project_folder": bigquery_project_folder,
         },
     )
 

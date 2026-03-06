@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "nao-chat",
+      "name": "lysmart-chat",
       "dependencies": {
         "@pydantic/monty": "^0.0.7",
         "depd": "^2.0.0",

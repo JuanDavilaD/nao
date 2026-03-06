@@ -61,7 +61,7 @@ export function ChatPrompt({ promptRef, placeholder, onChange, onEnter }: ChatPr
 			]}
 			onChange={onChange}
 			onEnter={onEnter}
-			className='w-full nao-input'
+			className='w-full lysmart-input'
 			theme={theme}
 		/>
 	);

@@ -1,10 +1,10 @@
-import { searchFiles } from '@nao/shared/tools';
+import { searchFiles } from '@lysmart/shared/tools';
 import fs from 'fs/promises';
 import { glob } from 'glob';
 import path from 'path';
 
 import { renderToModelOutput, SearchOutput } from '../../components/tool-outputs';
-import { isWithinProjectFolder, loadNaoignorePatterns, toVirtualPath } from '../../utils/tools';
+import { isWithinProjectFolder, loadLysmartIgnorePatterns, toVirtualPath } from '../../utils/tools';
 import { createTool } from '../../utils/tools';
 
 export default createTool<searchFiles.Input, searchFiles.Output>({
@@ -25,9 +25,9 @@ export default createTool<searchFiles.Input, searchFiles.Output>({
 		// Make pattern recursive if not already
 		const sanitizedPattern = pattern.startsWith('**/') ? pattern : `**/${pattern}`;
 
-		// Build ignore patterns from .naoignore
-		const naoignorePatterns = loadNaoignorePatterns(projectFolder);
-		const ignorePatterns = naoignorePatterns.flatMap((ignorePattern) => {
+		// Build ignore patterns from .lysmart_ignore
+		const lysmartIgnorePatterns = loadLysmartIgnorePatterns(projectFolder);
+		const ignorePatterns = lysmartIgnorePatterns.flatMap((ignorePattern) => {
 			const cleanPattern = ignorePattern.endsWith('/') ? ignorePattern.slice(0, -1) : ignorePattern;
 			return [`**/${cleanPattern}`, `**/${cleanPattern}/**`];
 		});

@@ -1,5 +1,5 @@
 import type { Tool } from '@ai-sdk/provider-utils';
-import { debounce } from '@nao/shared';
+import { debounce } from '@lysmart/shared';
 import { jsonSchema, type JSONSchema7 } from 'ai';
 import { existsSync, readFileSync, watch } from 'fs';
 import { createRuntime, type Runtime, ServerDefinition, ServerToolInfo } from 'mcporter';

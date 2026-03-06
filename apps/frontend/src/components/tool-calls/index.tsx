@@ -11,7 +11,7 @@ import { ReadToolCall } from './read';
 import { SearchToolCall } from './search';
 import { WebFetchToolCall } from './web-fetch';
 import { WebSearchToolCall } from './web-search';
-import type { StaticToolName, UIToolPart } from '@nao/backend/chat';
+import type { StaticToolName, UIToolPart } from '@lysmart/backend/chat';
 import { getToolName, isToolSettled } from '@/lib/ai';
 import { ToolCallProvider } from '@/contexts/tool-call';
 import { useAssistantMessage } from '@/contexts/assistant-message';

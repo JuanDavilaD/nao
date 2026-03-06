@@ -1,4 +1,4 @@
-import { displayChart, executeSql } from '@nao/shared/tools';
+import { displayChart, executeSql } from '@lysmart/shared/tools';
 import { eq, sql } from 'drizzle-orm';
 
 import s from '../db/abstractSchema';

@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MessageSquare } from 'lucide-react';
-import type { displayChart } from '@nao/shared/tools';
+import type { displayChart } from '@lysmart/shared/tools';
 import type { ParsedChartBlock, ParsedTableBlock } from '@/lib/story-segments';
 import { splitCodeIntoSegments } from '@/lib/story-segments';
 import { SegmentList } from '@/components/story-rendering';

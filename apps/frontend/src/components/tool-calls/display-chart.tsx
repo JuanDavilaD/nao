@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useState } from 'react';
-import { buildChart, labelize } from '@nao/shared';
+import { buildChart, labelize } from '@lysmart/shared';
 import { Download, FilePlus } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
@@ -12,7 +12,7 @@ import { ToolCallWrapper } from './tool-call-wrapper';
 import { ChartRangeSelector } from './display-chart-range-selector';
 import type { ToolCallComponentProps } from '.';
 import type { ChartConfig } from '../ui/chart';
-import type { displayChart } from '@nao/shared/tools';
+import type { displayChart } from '@lysmart/shared/tools';
 import type { DateRange } from '@/lib/charts.utils';
 import { filterByDateRange, DATE_RANGE_OPTIONS, toKey } from '@/lib/charts.utils';
 import { findStoryIds } from '@/lib/story.utils';

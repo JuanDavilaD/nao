@@ -1,5 +1,5 @@
-import { pluralize } from '@nao/shared';
-import type { grep } from '@nao/shared/tools';
+import { pluralize } from '@lysmart/shared';
+import type { grep } from '@lysmart/shared/tools';
 
 import { Block, CodeBlock, ListItem, Span, TitledList } from '../../lib/markdown';
 import { groupBy, removeNewLine, truncateMiddle } from '../../utils/utils';

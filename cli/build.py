@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build script for nao-core package.
+"""Build script for lysmart-core package.
 
 This script:
 1. Optionally bumps the version
@@ -21,7 +21,7 @@ from typing import Annotated
 
 from cyclopts import App, Parameter
 
-app = App(help="Build and package nao-core CLI.")
+app = App(help="Build and package lysmart-core CLI.")
 
 
 class BumpType(Enum):
@@ -114,7 +114,7 @@ def update_version(cli_dir: Path, new_version: str) -> None:
     pyproject.write_text(content)
 
     # Update __init__.py
-    init_file = cli_dir / "nao_core" / "__init__.py"
+    init_file = cli_dir / "lysmart_core" / "__init__.py"
     content = init_file.read_text()
     content = re.sub(
         r'^__version__\s*=\s*"[^"]+"',
@@ -200,7 +200,7 @@ def build_server(project_root: Path, output_dir: Path) -> None:
     backend_dir = project_root / "apps" / "backend"
     frontend_dir = project_root / "apps" / "frontend"
 
-    print("📦 Building nao chat server...")
+    print("📦 Building LySmart chat server...")
     print(f"   Project root: {project_root}")
 
     # Create output directory
@@ -237,8 +237,8 @@ def build_server(project_root: Path, output_dir: Path) -> None:
 
     # Step 4: Copy the compiled binary to output directory
     print("\n📦 Copying binary to output directory...")
-    binary_src = backend_dir / "nao-chat-server"
-    binary_dst = output_dir / "nao-chat-server"
+    binary_src = backend_dir / "lysmart-chat-server"
+    binary_dst = output_dir / "lysmart-chat-server"
     shutil.copy2(binary_src, binary_dst)
     print(f"   Binary: {binary_dst}")
 
@@ -331,7 +331,7 @@ def build_server(project_root: Path, output_dir: Path) -> None:
     print(f"   Build info: {build_info_path} (commit: {commit_short})")
 
     print("\n✓ Server build complete!")
-    print(f"   Binary: {output_dir / 'nao-chat-server'}")
+    print(f"   Binary: {output_dir / 'lysmart-chat-server'}")
     print(f"   Assets: {output_public}")
     print(f"   FastAPI: {fastapi_dst}")
     if rg_src:
@@ -369,14 +369,14 @@ def build(
         Parameter(help="Bump version before building (patch, minor, major)"),
     ] = None,
 ) -> None:
-    """Build the nao-core package.
+    """Build the lysmart-core package.
 
     Builds the frontend, compiles the backend with Bun, and creates a Python wheel.
     """
     cli_dir = Path(__file__).parent
     project_root = cli_dir.parent
-    output_dir = cli_dir / "nao_core" / "bin"
-    binary_path = output_dir / "nao-chat-server"
+    output_dir = cli_dir / "lysmart_core" / "bin"
+    binary_path = output_dir / "lysmart-chat-server"
     public_dir = output_dir / "public"
     sqlite_migrations_dir = output_dir / "migrations-sqlite"
     postgres_migrations_dir = output_dir / "migrations-postgres"

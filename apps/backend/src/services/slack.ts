@@ -55,7 +55,7 @@ class SlackService {
 		this._slackClient = new WebClient(slackConfig.botToken);
 
 		this._bot = new Chat({
-			userName: 'nao-chat',
+			userName: 'lysmart-chat',
 			adapters: {
 				slack: createSlackAdapter({
 					botToken: slackConfig.botToken,
@@ -158,7 +158,7 @@ class SlackService {
 		await this._validateUserAccess(ctx);
 
 		try {
-			ctx.convMessage = await ctx.thread.post('✨ nao is answering...');
+			ctx.convMessage = await ctx.thread.post('✨ LySmart is answering...');
 			await this._saveOrUpdateUserMessage(ctx);
 
 			const [chat] = await chatQueries.loadChat(ctx.chatId);
@@ -209,7 +209,7 @@ class SlackService {
 		const role = await projectQueries.getUserRoleInProject(this._projectId, ctx.user!.id);
 		if (role !== 'admin' && role !== 'user') {
 			await ctx.thread.post(
-				"❌ You don't have permission to use nao in this project. Please contact an administrator.",
+				"❌ You don't have permission to use LySmart in this project. Please contact an administrator.",
 			);
 			throw new Error('User does not have permission to access this project');
 		}

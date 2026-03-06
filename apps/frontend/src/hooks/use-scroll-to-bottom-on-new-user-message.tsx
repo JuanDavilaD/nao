@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useStickToBottomContext } from 'use-stick-to-bottom';
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 import { useAgentContext } from '@/contexts/agent.provider';
 
 /** Smoothly scroll to the bottom of the chat when a new user message is added to the conversation. */

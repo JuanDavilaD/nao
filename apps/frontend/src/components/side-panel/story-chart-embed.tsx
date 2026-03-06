@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import type { displayChart } from '@nao/shared/tools';
+import type { displayChart } from '@lysmart/shared/tools';
 import { useAgentContext } from '@/contexts/agent.provider';
 import { ChartDisplay } from '@/components/tool-calls/display-chart';
 

@@ -19,8 +19,8 @@ load_dotenv()
 cli_path = Path(__file__).parent.parent.parent / "cli"
 sys.path.insert(0, str(cli_path))
 
-from nao_core.config import NaoConfig, NaoConfigError
-from nao_core.context import get_context_provider
+from lysmart_core.config import LySmartConfig, LySmartConfigError
+from lysmart_core.context import get_context_provider
 
 port = int(os.environ.get("PORT", 8005))
 
@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     global scheduler
 
     # Setup periodic refresh if configured
-    refresh_schedule = os.environ.get("NAO_REFRESH_SCHEDULE")
+    refresh_schedule = os.environ.get("LYSMART_REFRESH_SCHEDULE")
     if refresh_schedule:
         from apscheduler.schedulers.asyncio import AsyncIOScheduler
         from apscheduler.triggers.cron import CronTrigger
@@ -93,7 +93,7 @@ app.add_middleware(
 
 class ExecuteSQLRequest(BaseModel):
     sql: str
-    nao_project_folder: str
+    lysmart_project_folder: str
     database_id: str | None = None
 
 
@@ -169,19 +169,19 @@ async def health_check():
     """Health check endpoint with context status."""
     try:
         provider = get_context_provider()
-        context_source = os.environ.get("NAO_CONTEXT_SOURCE", "local")
+        context_source = os.environ.get("LYSMART_CONTEXT_SOURCE", "local")
         return HealthResponse(
             status="ok",
             context_source=context_source,
             context_initialized=provider.is_initialized(),
-            refresh_schedule=os.environ.get("NAO_REFRESH_SCHEDULE"),
+            refresh_schedule=os.environ.get("LYSMART_REFRESH_SCHEDULE"),
         )
     except Exception:
         return HealthResponse(
             status="error",
-            context_source=os.environ.get("NAO_CONTEXT_SOURCE", "local"),
+            context_source=os.environ.get("LYSMART_CONTEXT_SOURCE", "local"),
             context_initialized=False,
-            refresh_schedule=os.environ.get("NAO_REFRESH_SCHEDULE"),
+            refresh_schedule=os.environ.get("LYSMART_REFRESH_SCHEDULE"),
         )
 
 
@@ -220,16 +220,16 @@ async def refresh_context():
 @app.post("/execute_sql", response_model=ExecuteSQLResponse)
 async def execute_sql(request: ExecuteSQLRequest):
     try:
-        # Load the nao config from the project folder
-        project_path = Path(request.nao_project_folder)
+        # Load the LySmart config from the project folder
+        project_path = Path(request.lysmart_project_folder)
         os.chdir(project_path)
-        config = NaoConfig.try_load(project_path, raise_on_error=True)
+        config = LySmartConfig.try_load(project_path, raise_on_error=True)
         assert config is not None
 
         if len(config.databases) == 0:
             raise HTTPException(
                 status_code=400,
-                detail="No databases configured in nao_config.yaml",
+                detail="No databases configured in lysmart_config.yaml",
             )
 
         # Determine which database to use
@@ -276,14 +276,14 @@ async def execute_sql(request: ExecuteSQLRequest):
         )
     except HTTPException:
         raise
-    except NaoConfigError as e:
+    except LySmartConfigError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":
-    nao_project_folder = os.getenv("NAO_DEFAULT_PROJECT_PATH")
-    if nao_project_folder:
-        os.chdir(nao_project_folder)
+    lysmart_project_folder = os.getenv("LYSMART_DEFAULT_PROJECT_PATH")
+    if lysmart_project_folder:
+        os.chdir(lysmart_project_folder)
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

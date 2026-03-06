@@ -1,11 +1,11 @@
 #!/usr/bin/env bun
 /**
- * nao-chat-server CLI
+ * lysmart-chat-server CLI
  *
  * Usage:
- *   nao-chat-server migrate
- *   nao-chat-server serve [--port <port>] [--host <host>]
- *   nao-chat-server (defaults to serve)
+ *   lysmart-chat-server migrate
+ *   lysmart-chat-server serve [--port <port>] [--host <host>]
+ *   lysmart-chat-server (defaults to serve)
  */
 
 import './env';
@@ -18,7 +18,7 @@ import { startServer } from './app';
 import dbConfig, { Dialect } from './db/dbConfig';
 import { runMigrations } from './db/migrate';
 
-const SECRET_FILE_NAME = '.nao-secret';
+const SECRET_FILE_NAME = '.lysmart-secret';
 
 interface BuildInfo {
 	commit: string;
@@ -112,10 +112,10 @@ function ensureAuthSecret(): void {
 
 function printHelp(): void {
 	console.log(`
-nao-chat-server - nao Chat Server
+lysmart-chat-server - LySmart Chat Server
 
 USAGE:
-    nao-chat-server <command> [options]
+    lysmart-chat-server <command> [options]
 
 COMMANDS:
     serve       Run migrations and start the chat server (default)
@@ -136,13 +136,13 @@ ENVIRONMENT VARIABLES:
 
 EXAMPLES:
     # SQLite (default: sqlite:./db.sqlite)
-    nao-chat-server serve --port 3000
+    lysmart-chat-server serve --port 3000
 
     # SQLite with custom path
-    DB_URI=sqlite:./data/chat.db nao-chat-server serve
+    DB_URI=sqlite:./data/chat.db lysmart-chat-server serve
 
     # PostgreSQL
-    DB_URI=postgres://user:pass@localhost/mydb nao-chat-server serve
+    DB_URI=postgres://user:pass@localhost/mydb lysmart-chat-server serve
 `);
 }
 
@@ -205,7 +205,7 @@ async function runServe(options: Record<string, string>): Promise<void> {
 		process.exit(1);
 	}
 
-	console.log(`\n🚀 Starting nao chat server...`);
+	console.log(`\n🚀 Starting LySmart chat server...`);
 	if (buildInfo) {
 		console.log(`   Build: ${buildInfo.commitShort} (${buildInfo.buildTime})`);
 	}

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import type { UserMemoryRecord } from '@nao/backend/memory';
+import type { UserMemoryRecord } from '@lysmart/backend/memory';
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -109,7 +109,7 @@ export function SettingsMemories() {
 			<SettingsCard
 				title='Memory'
 				titleSize='lg'
-				description='Memories enables nao to learn about you and your preferences over time.'
+				description='Memories enables LySmart to learn about you and your preferences over time.'
 				divide
 			>
 				<SettingsControlRow

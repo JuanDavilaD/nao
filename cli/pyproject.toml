@@ -1,11 +1,11 @@
 [project]
-name = "nao-core"
+name = "lysmart-core"
 version = "0.0.36"
-description = "nao Core is your analytics context builder with the best chat interface."
+description = "LySmart Core is your analytics context builder with the best chat interface."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
-authors = [{ name = "nao Labs" }]
+authors = [{ name = "LySmart Labs" }]
 keywords = ["analytics", "chat", "ai"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -50,11 +50,11 @@ dependencies = [
 dev = ["pytest-cov"]
 
 [project.scripts]
-nao = "nao_core.main:main"
+lysmart = "lysmart_core.main:main"
 
 [project.urls]
-Homepage = "https://getnao.io"
-Repository = "https://github.com/naolabs/chat"
+Homepage = "https://getlysmart.io"
+Repository = "https://github.com/lysmart-labs/chat"
 
 [dependency-groups]
 dev = ["ruff>=0.8.0", "ty>=0.0.9"]
@@ -65,15 +65,15 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build]
 # Include the bin directory with server binary and public assets
-artifacts = ["nao_core/bin/**"]
+artifacts = ["lysmart_core/bin/**"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["nao_core"]
+packages = ["lysmart_core"]
 exclude = ["**/example/**"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "nao_core/**",
+    "lysmart_core/**",
     "README.md",
     "LICENSE",
 ]

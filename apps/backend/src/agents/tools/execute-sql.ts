@@ -1,5 +1,5 @@
-import type { executeSql } from '@nao/shared/tools';
-import { executeSql as schemas } from '@nao/shared/tools';
+import type { executeSql } from '@lysmart/shared/tools';
+import { executeSql as schemas } from '@lysmart/shared/tools';
 
 import { ExecuteSqlOutput, renderToModelOutput } from '../../components/tool-outputs';
 import { env } from '../../env';
@@ -11,7 +11,7 @@ export async function executeQuery(
 	{ sql_query, database_id }: executeSql.Input,
 	context: ToolContext,
 ): Promise<executeSql.Output> {
-	const naoProjectFolder = context.projectFolder;
+	const lysmartProjectFolder = context.projectFolder;
 
 	const writePermEnabled = context.agentSettings?.sql?.dangerouslyWritePermEnabled ?? false;
 	if (!writePermEnabled && !(await isReadOnlySqlQuery(sql_query))) {
@@ -28,7 +28,7 @@ export async function executeQuery(
 		},
 		body: JSON.stringify({
 			sql: sql_query,
-			nao_project_folder: naoProjectFolder,
+			lysmart_project_folder: lysmartProjectFolder,
 			...(database_id && { database_id }),
 		}),
 	});

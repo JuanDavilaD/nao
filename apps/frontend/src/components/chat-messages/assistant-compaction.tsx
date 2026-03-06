@@ -2,7 +2,7 @@ import { memo, useState } from 'react';
 import { Streamdown } from 'streamdown';
 import { Conversation, ConversationContent } from '../ui/conversation';
 import { ErrorMessage } from '../ui/error-message';
-import type { CompactionPart } from '@nao/backend/chat';
+import type { CompactionPart } from '@lysmart/backend/chat';
 import { Expandable } from '@/components/ui/expandable';
 
 export const AssistantCompaction = memo(({ part }: { part?: CompactionPart }) => {

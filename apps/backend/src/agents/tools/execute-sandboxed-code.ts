@@ -1,4 +1,4 @@
-import { executeSandboxedCode as schemas } from '@nao/shared/tools';
+import { executeSandboxedCode as schemas } from '@lysmart/shared/tools';
 import crypto from 'crypto';
 import fs from 'fs';
 import os from 'os';
@@ -177,7 +177,7 @@ async function executeSandboxedCode(
 			}
 		}
 
-		tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nao-sandbox-'));
+		tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lysmart-sandbox-'));
 
 		if (!reused) {
 			await copyProjectToSandbox(box, projectFolder, tmpDir);

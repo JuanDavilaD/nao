@@ -69,7 +69,7 @@ function GeneralPage() {
 					checked={soundEnabled}
 					onCheckedChange={setSoundEnabled}
 				/>
-				<SettingsControlRow label='Theme' description='Choose how nao looks.' control={<ThemeSelector />} />
+				<SettingsControlRow label='Theme' description='Choose how LySmart looks.' control={<ThemeSelector />} />
 			</SettingsCard>
 
 			{isAdmin && <SettingsVersionInfo />}
