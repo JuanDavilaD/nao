@@ -105,7 +105,7 @@ For **business users**:
 - **Step 5**: Launch the chat and ask questions
 
     ```bash
-    LySmart chat
+    lysmart chat
     ```
 
     This will start the LySmart chat UI. It will open the chat interface in your browser at `http://localhost:5005`.

@@ -2,7 +2,7 @@
 
 LySmart is an open-source framework for building and deploying **analytics agents**. Users define a project context (databases, metadata, docs, tools) via the `lysmart-core` CLI, then deploy a chat UI where business users ask questions in natural language and get data insights back.
 
-The CLI (`lysmart init`, `lysmart sync`, `LySmart chat`) scaffolds a project, syncs data sources, and launches the app. End users install the pip package or run the Docker image.
+The CLI (`lysmart init`, `lysmart sync`, `lysmart chat`) scaffolds a project, syncs data sources, and launches the app. End users install the pip package or run the Docker image.
 
 ## Codebase
 

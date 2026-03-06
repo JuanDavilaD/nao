@@ -64,7 +64,7 @@ Options:
 ### Start the LySmart chat UI
 
 ```bash
-LySmart chat
+lysmart chat
 ```
 
 This will start the LySmart chat UI. It will open the chat interface in your browser at `http://localhost:5005`.
@@ -185,7 +185,7 @@ uv publish dist/*
 ## Architecture
 
 ```
-LySmart chat (CLI command)
+lysmart chat (CLI command)
     ↓ spawns
 lysmart-chat-server (Bun-compiled binary, port 5005)
   + FastAPI server (port 8005)
