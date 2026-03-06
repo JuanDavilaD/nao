@@ -1,4 +1,4 @@
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 
 export interface StorySummary {
 	id: string;

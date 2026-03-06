@@ -1,4 +1,4 @@
-import { pluralize, TOOL_LABELS } from '@nao/shared';
+import { pluralize, TOOL_LABELS } from '@lysmart/shared';
 import type { CardChild, CardElement, ModalElement } from 'chat';
 import { Actions, Button, Card, CardText, Image, LinkButton } from 'chat';
 
@@ -59,7 +59,7 @@ export const createCompletionCard = (chatUrl: string, vote?: 'up' | 'down'): Car
 	Card({
 		children: [
 			Actions([
-				LinkButton({ url: chatUrl, label: 'Open in nao' }),
+				LinkButton({ url: chatUrl, label: 'Open in LySmart' }),
 				Button({ id: 'feedback_positive', label: '👍', style: vote === 'up' ? 'primary' : 'default' }),
 				Button({ id: 'feedback_negative', label: '👎', style: vote === 'down' ? 'primary' : 'default' }),
 			]),

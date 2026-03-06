@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "=== nao Chat Server Entrypoint ==="
+echo "=== LySmart Chat Server Entrypoint ==="
 
 # Default values
 NAO_CONTEXT_SOURCE="${NAO_CONTEXT_SOURCE:-local}"
@@ -52,8 +52,8 @@ if [ "$NAO_CONTEXT_SOURCE" = "git" ]; then
     fi
     
     # Validate context
-    if [ ! -f "$NAO_DEFAULT_PROJECT_PATH/nao_config.yaml" ]; then
-        echo "ERROR: nao_config.yaml not found in cloned repository"
+    if [ ! -f "$NAO_DEFAULT_PROJECT_PATH/lysmart_config.yaml" ]; then
+        echo "ERROR: lysmart_config.yaml not found in cloned repository"
         exit 1
     fi
     
@@ -70,9 +70,9 @@ elif [ "$NAO_CONTEXT_SOURCE" = "local" ]; then
         exit 1
     fi
     
-    if [ ! -f "$NAO_DEFAULT_PROJECT_PATH/nao_config.yaml" ]; then
-        echo "ERROR: nao_config.yaml not found in $NAO_DEFAULT_PROJECT_PATH"
-        echo "Ensure the context path contains a valid nao project."
+    if [ ! -f "$NAO_DEFAULT_PROJECT_PATH/lysmart_config.yaml" ]; then
+        echo "ERROR: lysmart_config.yaml not found in $NAO_DEFAULT_PROJECT_PATH"
+        echo "Ensure the context path contains a valid LySmart project."
         exit 1
     fi
     
@@ -87,14 +87,14 @@ fi
 echo ""
 echo "=== Starting Services ==="
 
-# Grant the nao user access to /dev/kvm if it exists (needed for Boxlite sandboxing)
+# Grant the LySmart user access to /dev/kvm if it exists (needed for Boxlite sandboxing)
 if [ -e /dev/kvm ]; then
     KVM_GID=$(stat -c '%g' /dev/kvm)
     if ! getent group kvm > /dev/null 2>&1; then
         groupadd -g "$KVM_GID" kvm
     fi
-    usermod -aG kvm nao
-    echo "✓ Added nao user to kvm group (GID $KVM_GID)"
+    usermod -aG kvm lysmart
+    echo "✓ Added LySmart user to kvm group (GID $KVM_GID)"
 fi
 
 # Generate BETTER_AUTH_SECRET if not provided
@@ -108,4 +108,4 @@ fi
 export NAO_DEFAULT_PROJECT_PATH
 
 # Start supervisord (which manages FastAPI and Chat Server)
-exec /usr/bin/supervisord -c /etc/supervisor/conf.d/nao.conf
+exec /usr/bin/supervisord -c /etc/supervisor/conf.d/lysmart.conf

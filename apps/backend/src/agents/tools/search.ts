@@ -1,4 +1,4 @@
-import { searchFiles } from '@nao/shared/tools';
+import { searchFiles } from '@lysmart/shared/tools';
 import fs from 'fs/promises';
 import { glob } from 'glob';
 import path from 'path';
@@ -25,7 +25,7 @@ export default createTool<searchFiles.Input, searchFiles.Output>({
 		// Make pattern recursive if not already
 		const sanitizedPattern = pattern.startsWith('**/') ? pattern : `**/${pattern}`;
 
-		// Build ignore patterns from .naoignore
+		// Build ignore patterns from .lysmart_ignore
 		const naoignorePatterns = loadNaoignorePatterns(projectFolder);
 		const ignorePatterns = naoignorePatterns.flatMap((ignorePattern) => {
 			const cleanPattern = ignorePattern.endsWith('/') ? ignorePattern.slice(0, -1) : ignorePattern;

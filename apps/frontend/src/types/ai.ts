@@ -1,6 +1,6 @@
 import type { ReasoningUIPart } from 'ai';
-import type { UIToolPart, UIMessagePart, UIMessage } from '@nao/backend/chat';
-import type { LlmProvider } from '@nao/backend/llm';
+import type { UIToolPart, UIMessagePart, UIMessage } from '@lysmart/backend/chat';
+import type { LlmProvider } from '@lysmart/backend/llm';
 
 /** A collapsible part can be either a tool or reasoning */
 export type GroupablePart = UIToolPart | ReasoningUIPart;

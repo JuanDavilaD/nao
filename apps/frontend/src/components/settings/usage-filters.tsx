@@ -1,5 +1,5 @@
-import type { Granularity } from '@nao/backend/usage';
-import type { LlmProvider } from '@nao/backend/llm';
+import type { Granularity } from '@lysmart/backend/usage';
+import type { LlmProvider } from '@lysmart/backend/llm';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export type ChartView = 'messages' | 'tokens' | 'cost';

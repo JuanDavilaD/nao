@@ -1,4 +1,4 @@
-import { story } from '@nao/shared/tools';
+import { story } from '@lysmart/shared/tools';
 
 import { renderToModelOutput, StoryOutput } from '../../components/tool-outputs';
 import * as storyQueries from '../../queries/story.queries';
@@ -6,7 +6,7 @@ import { createTool } from '../../utils/tools';
 
 export default createTool<story.Input, story.Output>({
 	description: [
-		'Create or modify a nao Story — an interactive document combining markdown text and chart visualizations.',
+		'Create or modify a LySmart Story — an interactive document combining markdown text and chart visualizations.',
 		'Use "create" to initialize a new story, "update" to search-and-replace within it (producing a new version),',
 		'or "replace" to overwrite the entire content (producing a new version).',
 		'Charts are embedded via <chart query_id="..." chart_type="..." x_axis_key="..." series=\'[...]\' title="..." />.',

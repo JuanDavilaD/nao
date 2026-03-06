@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { Streamdown } from 'streamdown';
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 import type { GroupedMessagePart } from '@/types/ai';
 import { checkAssistantMessageHasContent, groupToolCalls, isToolGroupPart, isToolUIPart } from '@/lib/ai';
 import { ToolCallsGroup } from '@/components/tool-calls/tool-calls-group';

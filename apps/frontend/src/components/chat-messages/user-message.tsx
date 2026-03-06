@@ -1,6 +1,6 @@
 import { memo, useMemo, useRef } from 'react';
 import { Pencil, Check, Copy } from 'lucide-react';
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 import { cn } from '@/lib/utils';
 import { useAgentContext } from '@/contexts/agent.provider';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';

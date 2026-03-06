@@ -1,6 +1,6 @@
 import { hashValue } from './hash';
 
-export { labelize } from '@nao/shared';
+export { labelize } from '@lysmart/shared';
 
 export type RangeOptions = Record<string, { label: string }>;
 

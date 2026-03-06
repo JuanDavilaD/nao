@@ -1,5 +1,5 @@
-import { pluralize } from '@nao/shared';
-import type { searchFiles } from '@nao/shared/tools';
+import { pluralize } from '@lysmart/shared';
+import type { searchFiles } from '@lysmart/shared/tools';
 
 import { Block, ListItem, TitledList } from '../../lib/markdown';
 import { formatSize } from '../../utils/utils';

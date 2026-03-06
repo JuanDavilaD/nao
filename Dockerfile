@@ -66,10 +66,10 @@ WORKDIR /app
 # Install uv for fast dependency management
 RUN pip install uv
 
-# Copy cli package (contains nao_core)
+# Copy cli package (contains lysmart_core)
 COPY cli ./cli
 
-# Install nao_core package and dependencies (non-editable for portability)
+# Install lysmart_core package and dependencies (non-editable for portability)
 WORKDIR /app/cli
 RUN uv pip install --system .
 
@@ -97,7 +97,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install uv
 
 # Create non-root user
-RUN useradd -m -s /bin/bash nao
+RUN useradd -m -s /bin/bash lysmart
 WORKDIR /app
 
 # Copy Python packages from python-builder
@@ -123,17 +123,17 @@ COPY example /app/example
 
 # Copy supervisor configuration
 RUN mkdir -p /var/log/supervisor
-COPY docker/supervisord.conf /etc/supervisor/conf.d/nao.conf
+COPY docker/supervisord.conf /etc/supervisor/conf.d/lysmart.conf
 
 # Copy entrypoint script
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Create context directory for git mode
-RUN mkdir -p /app/context && chown -R nao:nao /app/context
+RUN mkdir -p /app/context && chown -R lysmart:lysmart /app/context
 
 # Set ownership
-RUN chown -R nao:nao /app /var/log/supervisor
+RUN chown -R lysmart:lysmart /app /var/log/supervisor
 
 # Environment variables
 ENV MODE=prod

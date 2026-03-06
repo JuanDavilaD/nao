@@ -1,24 +1,24 @@
 services:
     postgres:
         image: postgres:16-alpine
-        container_name: nao_chat_postgres
+        container_name: lysmart_chat_postgres
         env_file:
             - .env
         environment:
-            POSTGRES_USER: ${POSTGRES_USER:-nao}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nao}
-            POSTGRES_DB: ${POSTGRES_DB:-nao}
+            POSTGRES_USER: ${POSTGRES_USER:-lysmart}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lysmart}
+            POSTGRES_DB: ${POSTGRES_DB:-lysmart}
         ports:
             - '8888:5432'
         volumes:
-            - nao_postgres_data:/var/lib/postgresql/data
+            - lysmart_postgres_data:/var/lib/postgresql/data
         healthcheck:
-            test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-nao} -d ${POSTGRES_DB:-nao}']
+            test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-lysmart} -d ${POSTGRES_DB:-lysmart}']
             interval: 5s
             timeout: 5s
             retries: 5
 
-    nao:
+    lysmart:
         build:
             context: .
             dockerfile: Dockerfile
@@ -44,9 +44,9 @@ services:
             SLACK_SIGNING_SECRET: ${SLACK_SIGNING_SECRET}
 
             # =================================================================
-            # Database for nao chat history
+            # Database for LySmart chat history
             # =================================================================
-            DB_URI: postgres://${POSTGRES_USER:-nao}:${POSTGRES_PASSWORD:-nao}@postgres:5432/${POSTGRES_DB:-nao}
+            DB_URI: postgres://${POSTGRES_USER:-lysmart}:${POSTGRES_PASSWORD:-lysmart}@postgres:5432/${POSTGRES_DB:-lysmart}
 
             # =================================================================
             # Context Configuration
@@ -70,4 +70,4 @@ services:
             - postgres
 
 volumes:
-    nao_postgres_data:
+    lysmart_postgres_data:

@@ -8,7 +8,7 @@ on:
 
 env:
     REGISTRY: docker.io
-    IMAGE_NAME: getnao/nao
+    IMAGE_NAME: getlysmart/lysmart
 
 jobs:
     build:
@@ -152,10 +152,10 @@ jobs:
                   username: github-actions-demo
                   key: ${{ secrets.PRIVATE_KEY }}
                   script: |
-                      docker pull getnao/nao:${{ needs.merge.outputs.image-tag }}
-                      docker rm -f nao-chat 2>/dev/null || true
+                      docker pull getlysmart/lysmart:${{ needs.merge.outputs.image-tag }}
+                      docker rm -f lysmart-chat 2>/dev/null || true
                       docker run -p 5005:5005 \
-                        -e "BETTER_AUTH_URL=https://moon.getnao.io" \
+                        -e "BETTER_AUTH_URL=https://moon.getlysmart.io" \
                         -e "DB_SSL=true" \
                         -e "DB_URI=postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@${{ secrets.POSTGRES_HOST }}:${{ secrets.POSTGRES_PORT }}/${{ secrets.POSTGRES_DB }}" \
                         -e "NAO_CONTEXT_SOURCE=git" \
@@ -169,5 +169,5 @@ jobs:
                         --device /dev/kvm \
                         --security-opt seccomp=unconfined \
                         --security-opt apparmor=unconfined \
-                        --name nao-chat \
-                        -d getnao/nao:${{ needs.merge.outputs.image-tag }}
+                        --name lysmart-chat \
+                        -d getlysmart/lysmart:${{ needs.merge.outputs.image-tag }}

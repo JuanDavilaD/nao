@@ -1,36 +1,36 @@
 <p align="center">
-  <a href="https://getnao.io">
+  <a href="https://getlysmart.io">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".github/images/Icon_template_IOS.svg" />
-      <img src=".github/images/Icon_template_IOS.svg" height="128" alt="nao logo" />
+      <img src=".github/images/Icon_template_IOS.svg" height="128" alt="LySmart logo" />
     </picture>
   </a>
 </p>
 
-<h1 align="center">nao</h1>
+<h1 align="center">LySmart</h1>
 
 <h3 align="center">
   The #1 Open-Source Analytics Agent
 </h3>
 
 <p align="center">
-  🌐 <a href="https://getnao.io">Website</a> · 📚 <a href="https://docs.getnao.io">Documentation</a> · 💬 <a href="https://join.slack.com/t/naolabs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ">Slack</a>
+  🌐 <a href="https://getlysmart.io">Website</a> · 📚 <a href="https://docs.getlysmart.io">Documentation</a> · 💬 <a href="https://join.slack.com/t/lysmart-labs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ">Slack</a>
 </p>
 
 <br/>
 
 <p align="center">
-  <a href="https://getnao.io">
-    <img src=".github/images/nao_UI.png" alt="nao Chat Interface" />
+  <a href="https://getlysmart.io">
+    <img src=".github/images/lysmart_UI.png" alt="LySmart Chat Interface" />
   </a>
 </p>
 
 <br/>
 
-## What is nao?
+## What is LySmart?
 
-nao is a framework to build and deploy analytics agent. <br/>
-Create the context of your analytics agent with nao-core cli: data, metadata, modeling, rules, etc. <br/>
+LySmart is a framework to build and deploy analytics agent. <br/>
+Create the context of your analytics agent with lysmart-core cli: data, metadata, modeling, rules, etc. <br/>
 Deploy a UI for anyone to chat with your agent and run analytics on your data.
 
 ## Key Features
@@ -51,18 +51,18 @@ For **business users**:
 
 ## ⚡️ Quickstart your agent in 1 minute
 
-- **Step 1**: Install nao-core package
+- **Step 1**: Install lysmart-core package
 
     ```bash
-    pip install nao-core
+    pip install lysmart-core
     ```
 
 <br/>
 
-- **Step 2**: Initialize a nao project
+- **Step 2**: Initialize a LySmart project
 
     ```bash
-    nao init
+    lysmart init
     ```
 
     It will ask you:
@@ -72,12 +72,12 @@ For **business users**:
     - To add an LLM key _(optional)_
     - If you want to setup a Slack connection _(optional)_
 
-    💡 You can skip any optional question and configure them later in your `nao_config.yaml` file.
+    💡 You can skip any optional question and configure them later in your `lysmart_config.yaml` file.
 
     This will create:
     - A new folder with your project name
     - An architecture for your context files
-    - A `nao_config.yaml` configuration file
+    - A `lysmart_config.yaml` configuration file
     - A `RULES.md` file
 
 <br/>
@@ -87,7 +87,7 @@ For **business users**:
     cd to the project folder and run:
 
     ```bash
-    nao debug
+    lysmart debug
     ```
 
 <br/>
@@ -95,7 +95,7 @@ For **business users**:
 - **Step 4**: Synchronize your context
 
     ```bash
-    nao sync
+    lysmart sync
     ```
 
     This will populate your context folder with your context files (data, metadata, repos, etc.)
@@ -105,39 +105,39 @@ For **business users**:
 - **Step 5**: Launch the chat and ask questions
 
     ```bash
-    nao chat
+    LySmart chat
     ```
 
-    This will start the nao chat UI. It will open the chat interface in your browser at `http://localhost:5005`.
+    This will start the LySmart chat UI. It will open the chat interface in your browser at `http://localhost:5005`.
     From there, you can start asking questions to your agent.
 
 ## Evaluation framework
 
 Unit test your agent performance before deploying it to users. First, create a folder `tests/` with questions and expected SQL in yaml.
-Then, measure agent's performance on examples with nao test command:
+Then, measure agent's performance on examples with lysmart test command:
 
 ```bash
-nao test
+lysmart test
 ```
 
 View results in tests panel:
 
 ```bash
-nao test server
+lysmart test server
 ```
 
 ## Commands
 
 ```bash
-nao --help
-Usage: nao COMMAND
+lysmart --help
+Usage: lysmart COMMAND
 
 ╭─ Commands ────────────────────────────────────────────────────────────────╮
-│ chat         Start the nao chat UI.                                       │
-│ init         Initialize a new nao project.                                │
+│ chat         Start the LySmart chat UI.                                       │
+│ init         Initialize a new LySmart project.                                │
 │ sync         Sync context from your context sources (databases, repos)    │
 │ test         Measure agent's performance on test examples.                │
-│ debug        Debug and troubleshoot your nao setup.                       │
+│ debug        Debug and troubleshoot your LySmart setup.                       │
 │ --help (-h)  Display this message and exit.                               │
 │ --version    Display application version.                                 │
 ╰───────────────────────────────────────────────────────────────────────────╯
@@ -148,36 +148,36 @@ Usage: nao COMMAND
 Pull the image from DockerHub:
 
 ```bash
-docker pull getnao/nao:latest
+docker pull getlysmart/lysmart:latest
 ```
 
-Run nao chat with Docker using the example project bundled in the image:
+Run LySmart chat with Docker using the example project bundled in the image:
 
 ```bash
 docker run -d \
-  --name nao \
+  --name lysmart \
   -p 5005:5005 \
   -e BETTER_AUTH_URL=http://localhost:5005 \
-  getnao/nao:latest
+  getlysmart/lysmart:latest
 ```
 
-Run nao chat with Docker using your local nao project:
+Run LySmart chat with Docker using your local LySmart project:
 
 ```bash
 docker run -d \
-  --name nao \
+  --name lysmart \
   -p 5005:5005 \
   -e BETTER_AUTH_URL=http://localhost:5005 \
-  -v /path/to/your/nao-project:/app/project \
+  -v /path/to/your/lysmart-project:/app/project \
   -e NAO_DEFAULT_PROJECT_PATH=/app/project \
-  getnao/nao:latest
+  getlysmart/lysmart:latest
 ```
 
 Access the UI at http://localhost:5005 (or at any URL you configured).
 
-See the [DockerHub page](https://hub.docker.com/r/getnao/nao) for more details.
+See the [DockerHub page](https://hub.docker.com/r/getlysmart/lysmart) for more details.
 
-For end-to-end self-hosted deployment (for example on Cloud Run with PostgreSQL), see the [Deployment Guide](https://docs.getnao.io/nao-agent/self-hosting/deployment-guide).
+For end-to-end self-hosted deployment (for example on Cloud Run with PostgreSQL), see the [Deployment Guide](https://docs.getlysmart.io/lysmart-agent/self-hosting/deployment-guide).
 
 ## 👩🏻‍💻 Development
 
@@ -201,13 +201,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, commands, and guid
 
 - Star the repo
 - Subscribe to releases (Watch → Custom → Releases)
-- Follow us on [LinkedIn](https://www.linkedin.com/company/getnao)
-- Join our [Slack](https://join.slack.com/t/naolabs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ)
+- Follow us on [LinkedIn](https://www.linkedin.com/company/getlysmart)
+- Join our [Slack](https://join.slack.com/t/lysmart-labs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ)
 - Contribute to the repo!
 
 ## 🫰🏻 Partners
 
-nao Labs is a proud Y Combinator company!
+LySmart Labs is a proud Y Combinator company!
 
 <a href="https://ycombinator.com/">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/1200px-Y_Combinator_logo.svg.png" alt="YCombinator" style="padding: 10px" width="70px">

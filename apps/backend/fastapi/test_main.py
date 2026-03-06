@@ -30,7 +30,7 @@ def duckdb_project_folder():
                 }
             ],
         }
-        config_path = Path(tmpdir) / "nao_config.yaml"
+        config_path = Path(tmpdir) / "lysmart_config.yaml"
         with config_path.open("w") as f:
             yaml.dump(config, f)
         yield tmpdir
@@ -88,14 +88,14 @@ def bigquery_project_folder():
             "project_name": "test-project",
             "databases": [
                 {
-                    "name": "nao-bigquery",
+                    "name": "lysmart-bigquery",
                     "type": "bigquery",
-                    "project_id": "nao-corp",
+                    "project_id": "lysmart-corp",
                     "sso": True,
                 }
             ],
         }
-        config_path = Path(tmpdir) / "nao_config.yaml"
+        config_path = Path(tmpdir) / "lysmart_config.yaml"
         with config_path.open("w") as f:
             yaml.dump(config, f)
         yield tmpdir

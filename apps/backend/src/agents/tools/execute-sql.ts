@@ -1,5 +1,5 @@
-import type { executeSql } from '@nao/shared/tools';
-import { executeSql as schemas } from '@nao/shared/tools';
+import type { executeSql } from '@lysmart/shared/tools';
+import { executeSql as schemas } from '@lysmart/shared/tools';
 
 import { ExecuteSqlOutput, renderToModelOutput } from '../../components/tool-outputs';
 import { env } from '../../env';

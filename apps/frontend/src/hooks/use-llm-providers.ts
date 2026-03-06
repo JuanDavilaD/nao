@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { llmProviderSchema } from '@nao/backend/llm';
-import type { LlmProvider } from '@nao/backend/llm';
+import { llmProviderSchema } from '@lysmart/backend/llm';
+import type { LlmProvider } from '@lysmart/backend/llm';
 import { trpc } from '@/main';
 
 export interface EditingState {

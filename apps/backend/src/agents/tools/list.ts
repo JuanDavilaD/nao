@@ -1,4 +1,4 @@
-import { list } from '@nao/shared/tools';
+import { list } from '@lysmart/shared/tools';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -19,7 +19,7 @@ export default createTool<list.Input, list.Output>({
 
 		const dirEntries = await fs.readdir(realPath, { withFileTypes: true });
 
-		// Filter out excluded entries (including .naoignore patterns)
+		// Filter out excluded entries (including .lysmart_ignore patterns)
 		const filteredEntries = dirEntries.filter(
 			(entry) => !shouldExcludeEntry(entry.name, parentRelativePath, projectFolder),
 		);

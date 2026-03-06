@@ -1,6 +1,6 @@
 import { Editor } from '@monaco-editor/react';
 import { ResizableSeparator, ResizablePanel, ResizablePanelGroup } from '../ui/resizable';
-import type { executeSql } from '@nao/shared/tools';
+import type { executeSql } from '@lysmart/shared/tools';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { formatSQL } from '@/lib/sql-formatter';
 

@@ -7,13 +7,13 @@ import { SidebarSettingsNav } from './sidebar-settings-nav';
 
 import StoryIcon from './ui/story-icon';
 import type { LucideIcon } from 'lucide-react';
-import type { ChatListItem as ChatListItemType } from '@nao/backend/chat';
+import type { ChatListItem as ChatListItemType } from '@lysmart/backend/chat';
 import { Button } from '@/components/ui/button';
 import { cn, hideIf } from '@/lib/utils';
 import { useChatListQuery } from '@/queries/use-chat-list-query';
 import { useSidebar } from '@/contexts/sidebar';
 import { useCommandMenuCallback } from '@/contexts/command-menu-callback';
-import NaoLogoGreyscale from '@/components/icons/nao-logo-greyscale.svg';
+import LySmartLogoGreyscale from '@/components/icons/lysmart-logo-greyscale.svg';
 
 export function Sidebar() {
 	const chats = useChatListQuery();
@@ -104,7 +104,7 @@ export function Sidebar() {
 									hideIf(effectiveIsCollapsed),
 								)}
 							>
-								<NaoLogoGreyscale className='size-5' />
+								<LySmartLogoGreyscale className='size-5' />
 							</div>
 
 							{isMobile ? (

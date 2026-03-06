@@ -27,12 +27,12 @@ export const createTool = <TInput, TOutput>(
 export const EXCLUDED_DIRS = ['.meta'];
 
 /**
- * Cache for .naoignore patterns per project folder.
+ * Cache for .lysmart_ignore patterns per project folder.
  */
 const naoignoreCache = new Map<string, string[]>();
 
 /**
- * Loads and parses the .naoignore file from the project folder.
+ * Loads and parses the .lysmart_ignore file from the project folder.
  * Returns an array of patterns. Results are cached per project folder.
  */
 export const loadNaoignorePatterns = (projectFolder: string): string[] => {
@@ -40,7 +40,7 @@ export const loadNaoignorePatterns = (projectFolder: string): string[] => {
 		return naoignoreCache.get(projectFolder)!;
 	}
 
-	const naoignorePath = path.join(projectFolder, '.naoignore');
+	const naoignorePath = path.join(projectFolder, '.lysmart_ignore');
 	let patterns: string[] = [];
 
 	try {
@@ -60,14 +60,14 @@ export const loadNaoignorePatterns = (projectFolder: string): string[] => {
 };
 
 /**
- * Clears the naoignore cache. Useful for testing or when the .naoignore file changes.
+ * Clears the naoignore cache. Useful for testing or when the .lysmart_ignore file changes.
  */
 export const clearNaoignoreCache = (): void => {
 	naoignoreCache.clear();
 };
 
 /**
- * Checks if a path matches any .naoignore pattern.
+ * Checks if a path matches any .lysmart_ignore pattern.
  * @param relativePath - Path relative to the project folder (e.g., "templates/foo.md")
  * @param projectFolder - The project folder path
  * @returns true if the path should be ignored
@@ -110,7 +110,7 @@ export const isIgnoredByNaoignore = (relativePath: string, projectFolder: string
 };
 
 /**
- * Checks if a real filesystem path should be ignored based on .naoignore.
+ * Checks if a real filesystem path should be ignored based on .lysmart_ignore.
  * @param realPath - Absolute filesystem path
  * @param projectFolder - The project folder path
  * @returns true if the path should be ignored
@@ -144,7 +144,7 @@ export const isExcludedEntry = (name: string): boolean => {
 
 /**
  * Checks if an entry should be excluded from directory listings.
- * Combines excluded directories and .naoignore patterns.
+ * Combines excluded directories and .lysmart_ignore patterns.
  * @param entryName - The name of the entry (file or directory)
  * @param parentPath - The parent directory path relative to project folder
  * @param projectFolder - The project folder path
@@ -163,7 +163,7 @@ export const shouldExcludeEntry = (entryName: string, parentPath: string, projec
 
 /**
  * Checks if a given path is within the project folder, not in an excluded directory,
- * and not ignored by .naoignore.
+ * and not ignored by .lysmart_ignore.
  */
 export const isWithinProjectFolder = (filePath: string, projectFolder: string): boolean => {
 	const resolved = path.resolve(filePath);
@@ -185,7 +185,7 @@ export const isWithinProjectFolder = (filePath: string, projectFolder: string): 
  * - `/foo/bar` → `{projectFolder}/foo/bar`
  * - `foo/bar` → `{projectFolder}/foo/bar`
  * - `/` or empty → `{projectFolder}`
- * @throws Error if the resolved path escapes the project folder or is ignored by .naoignore
+ * @throws Error if the resolved path escapes the project folder or is ignored by .lysmart_ignore
  */
 export const toRealPath = (virtualPath: string, projectFolder: string): string => {
 	// Strip leading slash to make it relative to project folder
@@ -205,9 +205,9 @@ export const toRealPath = (virtualPath: string, projectFolder: string): string =
 		throw new Error(`Access denied: path '${virtualPath}' is in an excluded directory`);
 	}
 
-	// Check if path is ignored by .naoignore
+	// Check if path is ignored by .lysmart_ignore
 	if (isIgnoredPath(resolvedPath, projectFolder)) {
-		throw new Error(`Access denied: path '${virtualPath}' is ignored by .naoignore`);
+		throw new Error(`Access denied: path '${virtualPath}' is ignored by .lysmart_ignore`);
 	}
 
 	return resolvedPath;

@@ -1,4 +1,4 @@
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 
 /**
  * Scans story code for <chart|table query_id="..."> references and collects

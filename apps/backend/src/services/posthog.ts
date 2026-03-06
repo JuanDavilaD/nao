@@ -1,9 +1,9 @@
 /**
- * PostHog analytics tracking for nao backend.
+ * PostHog analytics tracking for LySmart backend.
  *
  * Tracking is enabled when POSTHOG_DISABLED is not 'true'.
  */
-import { getPosthogConfig, PosthogConfig } from '@nao/shared/posthog';
+import { getPosthogConfig, PosthogConfig } from '@lysmart/shared/posthog';
 import { PostHog } from 'posthog-node';
 
 import { env } from '../env';
@@ -71,14 +71,14 @@ export class PostHogService {
 	/** Add properties that will be shown on the PostHog person's profile. */
 	private _personProperties(): Record<string, unknown> {
 		return {
-			nao_core_version: env.NAO_CORE_VERSION, // Set `nao_core_version` in event and person properties for convenience
+			lysmart_core_version: env.NAO_CORE_VERSION, // Set `lysmart_core_version` in event and person properties for convenience
 			// `$set` replaces any property value that may have been set on a person profile
 			$set: {
-				nao_core_version: env.NAO_CORE_VERSION,
+				lysmart_core_version: env.NAO_CORE_VERSION,
 			},
 			// `$set_once` only sets the property if it has not been set before
 			$set_once: {
-				first_nao_core_version: env.NAO_CORE_VERSION,
+				first_lysmart_core_version: env.NAO_CORE_VERSION,
 			},
 		};
 	}

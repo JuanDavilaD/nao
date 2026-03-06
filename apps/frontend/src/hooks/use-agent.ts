@@ -10,7 +10,7 @@ import { useLocalStorage } from './use-local-storage';
 import { useChatId } from './use-chat-id';
 import type { InferUIMessageChunk } from 'ai';
 import type { UseChatHelpers } from '@ai-sdk/react';
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 import type { MentionOption } from 'prompt-mentions';
 import type ChatSelectedModel from '@/types/ai';
 import { messageQueueStore } from '@/stores/chat-message-queue';
@@ -41,7 +41,7 @@ export interface SendMessageArgs {
 	text: string;
 }
 
-const selectedModelStorage = createLocalStorage<ChatSelectedModel>('nao-selected-model');
+const selectedModelStorage = createLocalStorage<ChatSelectedModel>('lysmart-selected-model');
 
 export const useAgent = (): AgentHelpers => {
 	const navigate = useNavigate();

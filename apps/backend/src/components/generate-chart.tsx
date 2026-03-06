@@ -1,5 +1,5 @@
-import { buildChart, defaultColorFor, labelize } from '@nao/shared';
-import type { displayChart } from '@nao/shared/tools';
+import { buildChart, defaultColorFor, labelize } from '@lysmart/shared';
+import type { displayChart } from '@lysmart/shared/tools';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 

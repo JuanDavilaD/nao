@@ -1,8 +1,8 @@
-# nao - The #1 Open-Source Analytics Agent
+# LySmart - The #1 Open-Source Analytics Agent
 
-nao is a framework to build and deploy analytics agents. Create context for your analytics agent with the nao-core CLI, then deploy a chat UI for anyone to interact with your data.
+LySmart is a framework to build and deploy analytics agents. Create context for your analytics agent with the lysmart-core CLI, then deploy a chat UI for anyone to interact with your data.
 
-🌐 [Website](https://getnao.io) · 📚 [Documentation](https://docs.getnao.io) · 💬 [Slack](https://join.slack.com/t/naolabs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ) · 🐙 [GitHub](https://github.com/getnao/nao)
+🌐 [Website](https://getlysmart.io) · 📚 [Documentation](https://docs.getlysmart.io) · 💬 [Slack](https://join.slack.com/t/lysmart-labs/shared_invite/zt-3cgdql4up-Az9FxGkTb8Qr34z2Dxp9TQ) · 🐙 [GitHub](https://github.com/getlysmart/lysmart)
 
 ## Docker
 
@@ -25,11 +25,11 @@ nao is a framework to build and deploy analytics agents. Create context for your
 
 ```bash
 docker run -d \
-  --name nao \
+  --name lysmart \
   -p 5005:5005 \
   -e OPENAI_API_KEY=sk-... \
   -v /path/to/your/project:/app/project \
-  getnao/nao:latest
+  getlysmart/lysmart:latest
 ```
 
 ## Environment Variables
@@ -55,10 +55,10 @@ docker run -d \
 
 ## Volumes
 
-Mount your nao project directory to make it available to the agent:
+Mount your LySmart project directory to make it available to the agent:
 
 ```bash
--v /path/to/your/nao-project:/app/project
+-v /path/to/your/lysmart-project:/app/project
 ```
 
 Then set `NAO_DEFAULT_PROJECT_PATH=/app/project`, you can also use the example project by setting `NAO_DEFAULT_PROJECT_PATH=/app/example`.
@@ -67,10 +67,10 @@ Then set `NAO_DEFAULT_PROJECT_PATH=/app/project`, you can also use the example p
 
 ```bash
 docker run -d \
-  --name nao \
+  --name lysmart \
   -p 5005:5005 \
   -e NAO_DEFAULT_PROJECT_PATH=/app/project \
-  getnao/nao:latest
+  getlysmart/lysmart:latest
 ```
 
 Then navigate to http://localhost:5005 to access the UI (or to any URL you configured).
@@ -85,4 +85,4 @@ Then navigate to http://localhost:5005 to access the UI (or to any URL you confi
 
 ## License
 
-Apache 2.0 - See [LICENSE](https://github.com/naolabs/chat/blob/main/LICENSE)
+Apache 2.0 - See [LICENSE](https://github.com/lysmart-labs/chat/blob/main/LICENSE)

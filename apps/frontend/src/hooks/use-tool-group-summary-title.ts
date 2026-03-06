@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { TOOL_LABELS, pluralize } from '@nao/shared';
+import { TOOL_LABELS, pluralize } from '@lysmart/shared';
 import type { GroupablePart } from '@/types/ai';
 import { isReasoningPart } from '@/lib/ai';
 

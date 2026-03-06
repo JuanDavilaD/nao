@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ThumbsUp, ThumbsDown, Copy, Check } from 'lucide-react';
 import { useMutation } from '@tanstack/react-query';
-import type { UIMessage } from '@nao/backend/chat';
+import type { UIMessage } from '@lysmart/backend/chat';
 import type { FormEvent, KeyboardEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { trpc } from '@/main';

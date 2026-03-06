@@ -1,4 +1,4 @@
-import { grep } from '@nao/shared/tools';
+import { grep } from '@lysmart/shared/tools';
 import { spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
@@ -83,7 +83,7 @@ export default createTool<grep.Input, grep.Output>({
 			args.push('--glob', glob);
 		}
 
-		// Add .naoignore patterns as exclusions
+		// Add .lysmart_ignore patterns as exclusions
 		const naoignorePatterns = loadNaoignorePatterns(projectFolder);
 		for (const ignorePattern of naoignorePatterns) {
 			// Convert naoignore patterns to ripgrep glob exclusions

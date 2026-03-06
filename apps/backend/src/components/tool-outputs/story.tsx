@@ -1,4 +1,4 @@
-import type { story } from '@nao/shared/tools';
+import type { story } from '@lysmart/shared/tools';
 
 import { Block } from '../../lib/markdown';
 
